@@ -1,21 +1,27 @@
 library(arrow)
 library(monocle3)
 library(dplyr)
-library(umap)
 
 df <- read_parquet("./covid19cq1_SARS_TS2PL1_Cell_MasterDataTable.parquet")
 df_plate_map <- read_parquet("./plate_map_TS_202008.parquet")
 df_image_scores <- read_parquet("./image_scores_CQ1_TS_202008.parquet")
 
-# 429 is a column with NA values
-cell_features <- cbind(df[,23:428], df[,430:824])
 
-populate_cds <- function(
+# df_uninfected = df %>% dplyr::select( based on time_point)
+cell_features_uninfected <- df %>% dplyr::filter(time_point == "Uninfected" )
+cell_features_8hrs <- df %>% dplyr::filter(time_point == "8 hours")
+cell_features_24hrs <- df %>% dplyr::filter(time_point == "24 hours")
+cell_features_30hrs <- df %>% dplyr::filter(time_point == "30 hours")
+cell_features_36hrs <- df %>% dplyr::filter(time_point == "36 hours")
+cell_features_48hrs <- df %>% dplyr::filter(time_point == "48 hours")
+
+prepare_cds <- function(
   cell_features,
-  embedding_type = c("UMAP"),
-  embedding = NULL,
   verbose = FALSE) {
 
+  # 429 is a column with NA values
+  metadata <- cell_features[,1:22]
+  cell_features <- cbind(cell_features[,23:428], cell_features[,430:824])
 
   n_cells <- nrow(cell_features)
   n_features <- ncol(cell_features)
@@ -34,60 +40,38 @@ populate_cds <- function(
   cell_metadata <- as.matrix(cell_metadata)
   colnames(cell_metadata) <- c("id")
   rownames(cell_metadata) <- cell_metadata
-
   colnames(expression_data) <- cell_metadata
-  
+  cell_metadata <- cbind(cell_metadata, metadata)
+
   cds <- new_cell_data_set(expression_data,
                            cell_metadata = cell_metadata,
                            gene_metadata = gene_metadata)
   cds
-
-  # if(verbose){
-  #   cat("Creating a SingleCellExperiment object ...\n")
-  # }
-  # 
-  # # unpack monocle3::new_cell_data_set(...)
-  # # to not use dgCMatrix for the expression matrix they are dense feature matrices
-  # sce <- SingleCellExperiment(
-  #   list(counts = expression_data),
-  #   rowData = gene_metadata,
-  #   colData = cell_metadata)
-  # 
-  # if(verbose){
-  #   cat("Creating a Cell Data Set object ...\n")
-  # }
-  # cds <- methods::new(
-  #   Class = "cell_data_set",
-  #   assays = SummarizedExperiment::Assays(list(counts = expression_data)),
-  #   colData = colData(sce),
-  #   int_elementMetadata = int_elementMetadata(sce),
-  #   int_colData = int_colData(sce),
-  #   int_metadata = int_metadata(sce),
-  #   metadata = S4Vectors::metadata(sce),
-  #   NAMES = NULL,
-  #   elementMetadata = elementMetadata(sce)[,0],
-  #   rowRanges = rowRanges(sce))
-  # 
-  # if(verbose){
-  #   cat("Configuring the cell data set ...\n")
-  # }
-  # 
-  # S4Vectors::metadata(cds)$cds_version <- Biobase::package.version("monocle3")
-  # clusters <- stats::setNames(S4Vectors::SimpleList(), character(0))
-  # # cds <- monocle3::estimate_size_factors(cds)
-  # 
-  # row.names(SummarizedExperiment::colData(cds)) <- expression_data %>% ncol %>% seq_len
-  # if (!is.null(embedding)) {
-  #   SingleCellExperiment::reducedDims(cds)[[embedding_type]] <- embedding
-  # }
-  # cds
 }
 
-cds <- populate_cds(cell_features, verbose=TRUE)
+set.seed(1)
 
-cds <- preprocess_cds(cds, num_dim = 100)
+for (val in 1:10) {
+  # for debug purpose
+  # cell_features <- cell_features[1:1000,]
+  # sampled_cell_features <- sample_n(cell_features_uninfected, size=1000)
 
-cds <- reduce_dimension(cds)
+  # first half
+  # sampled_cell_features <- cell_features_uninfected %>% slice(seq(0.5 * n()))
+  # second half
+  sampled_cell_features <- cell_features_uninfected %>% slice(-seq(0.5 * n()))
+  cds <- prepare_cds(sampled_cell_features , verbose=TRUE)
+  cds <- preprocess_cds(cds, num_dim = 100)
+  cds_reduced <- reduce_dimension(cds)
+  jpeg(paste0('plot_cell_', val,'.jpg'), width=2000, height=2000, res=300)
+  print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_WellID"))
+  dev.off()
+}
+
+
+cds <- cluster_cells(cds_reduced, resolution=1e-5)
+
+
 
 jpeg('plot_pc_variance.jpg', width=2000, height=2000, res=300)
 plot_pc_variance_explained(cds)
