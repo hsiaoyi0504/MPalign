@@ -2,10 +2,14 @@ library(arrow)
 library(monocle3)
 library(dplyr)
 
-df <- read_parquet("./covid19cq1_SARS_TS2PL1_Cell_MasterDataTable.parquet")
-df_plate_map <- read_parquet("./plate_map_TS_202008.parquet")
-df_image_scores <- read_parquet("./image_scores_CQ1_TS_202008.parquet")
 
+# on local
+# df <- read_parquet("./covid19cq1_SARS_TS2PL1_Cell_MasterDataTable.parquet")
+# df_plate_map <- read_parquet("./plate_map_TS_202008.parquet")
+# df_image_scores <- read_parquet("./image_scores_CQ1_TS_202008.parquet")
+df <- read_parquet("/nfs/turbo/umms-jzsexton/MPalign/covid19cq1_SARS_TS2PL1_Cell_MasterDataTable.parquet")
+df_plate_map <- read_parquet("/nfs/turbo/umms-jzsexton/MPalign/plate_map_TS_202008.parquet")
+df_image_scores <- read_parquet("/nfs/turbo/umms-jzsexton/MPalign/image_scores_CQ1_TS_202008.parquet")
 
 # df_uninfected = df %>% dplyr::select( based on time_point)
 cell_features_uninfected <- df %>% dplyr::filter(time_point == "Uninfected" )
@@ -51,7 +55,26 @@ prepare_cds <- function(
 
 set.seed(1)
 
-for (val in 1:10) {
+
+# first half
+sampled_cell_features <- cell_features_uninfected %>% slice(seq(0.5 * n()))
+cds <- prepare_cds(sampled_cell_features , verbose=TRUE)
+cds <- preprocess_cds(cds, num_dim = 100)
+cds_reduced <- reduce_dimension(cds)
+jpeg('plot_cell_first_half.jpg', width=2000, height=2000, res=300)
+print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_WellID") + theme(legend.position = "right"))
+dev.off()
+
+# second half
+sampled_cell_features <- cell_features_uninfected %>% slice(-seq(0.5 * n()))
+cds <- prepare_cds(sampled_cell_features , verbose=TRUE)
+cds <- preprocess_cds(cds, num_dim = 100)
+cds_reduced <- reduce_dimension(cds)
+jpeg('plot_cell_second_half.jpg', width=2000, height=2000, res=300)
+print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_WellID") + theme(legend.position = "right"))
+dev.off()
+
+# for (val in 1:10) {
   # for debug purpose
   # cell_features <- cell_features[1:1000,]
   # sampled_cell_features <- sample_n(cell_features_uninfected, size=1000)
@@ -59,27 +82,27 @@ for (val in 1:10) {
   # first half
   # sampled_cell_features <- cell_features_uninfected %>% slice(seq(0.5 * n()))
   # second half
-  sampled_cell_features <- cell_features_uninfected %>% slice(-seq(0.5 * n()))
-  cds <- prepare_cds(sampled_cell_features , verbose=TRUE)
-  cds <- preprocess_cds(cds, num_dim = 100)
-  cds_reduced <- reduce_dimension(cds)
-  jpeg(paste0('plot_cell_', val,'.jpg'), width=2000, height=2000, res=300)
-  print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_WellID"))
-  dev.off()
-}
+  # sampled_cell_features <- cell_features_uninfected %>% slice(-seq(0.5 * n()))
+  # cds <- prepare_cds(sampled_cell_features , verbose=TRUE)
+  # cds <- preprocess_cds(cds, num_dim = 100)
+  # cds_reduced <- reduce_dimension(cds)
+  # jpeg(paste0('plot_cell_', val,'.jpg'), width=2000, height=2000, res=300)
+  # print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_WellID"))
+  # dev.off()
+# }
 
 
 cds <- cluster_cells(cds_reduced, resolution=1e-5)
 
 
 
-jpeg('plot_pc_variance.jpg', width=2000, height=2000, res=300)
-plot_pc_variance_explained(cds)
-dev.off()
+# jpeg('plot_pc_variance.jpg', width=2000, height=2000, res=300)
+# plot_pc_variance_explained(cds)
+# dev.off()
 
-jpeg('plot_cell.jpg', width=2000, height=2000, res=300)
-plot_cells(cds)
-dev.off()
+# jpeg('plot_cell.jpg', width=2000, height=2000, res=300)
+# plot_cells(cds)
+# dev.off()
 
 # different time series -> different batch
 # one option: shape feature only?
