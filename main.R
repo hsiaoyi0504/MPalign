@@ -55,14 +55,14 @@ prepare_cds <- function(
 
 set.seed(1)
 
-
+# exp 0
 # first half
 sampled_cell_features <- cell_features_uninfected %>% slice(seq(0.5 * n()))
 cds <- prepare_cds(sampled_cell_features , verbose=TRUE)
 cds <- preprocess_cds(cds, num_dim = 100)
 cds_reduced <- reduce_dimension(cds)
 jpeg('plot_cell_first_half.jpg', width=2000, height=2000, res=300)
-print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_WellID") + theme(legend.position = "right"))
+print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_FieldID", label_cell_groups=FALSE))
 dev.off()
 
 # second half
@@ -71,8 +71,28 @@ cds <- prepare_cds(sampled_cell_features , verbose=TRUE)
 cds <- preprocess_cds(cds, num_dim = 100)
 cds_reduced <- reduce_dimension(cds)
 jpeg('plot_cell_second_half.jpg', width=2000, height=2000, res=300)
-print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_WellID") + theme(legend.position = "right"))
+print(plot_cells(cds_reduced, color_cells_by="Image_Metadata_FieldID", label_cell_groups=FALSE))
 dev.off()
+
+# As a proof of concept, try to cluster field 1 and field 2 independently of uninfecte_cell_features
+field_1 <- cell_features_uninfected %>% dplyr::filter(Image_Metadata_FieldID== "0001")
+cds <- prepare_cds(field_1 , verbose=TRUE)
+cds <- preprocess_cds(cds, num_dim = 100)
+cds <- reduce_dimension(cds)
+cds <- cluster_cells(cds, resolution=1e-5)
+jpeg('plot_cell_first_field.jpg', width=2000, height=2000, res=300)
+print(plot_cells(cds))
+dev.off()
+
+field_2 <- cell_features_uninfected %>% dplyr::filter(Image_Metadata_FieldID== "0002")
+cds <- prepare_cds(field_2 , verbose=TRUE)
+cds <- preprocess_cds(cds, num_dim = 100)
+cds <- reduce_dimension(cds)
+cds <- cluster_cells(cds, resolution=1e-5)
+jpeg('plot_cell_second_field.jpg', width=2000, height=2000, res=300)
+print(plot_cells(cds))
+dev.off()
+
 
 # for (val in 1:10) {
   # for debug purpose
@@ -92,9 +112,7 @@ dev.off()
 # }
 
 
-cds <- cluster_cells(cds_reduced, resolution=1e-5)
-
-
+# cds <- cluster_cells(cds_reduced, resolution=1e-5)
 
 # jpeg('plot_pc_variance.jpg', width=2000, height=2000, res=300)
 # plot_pc_variance_explained(cds)
@@ -107,3 +125,4 @@ cds <- cluster_cells(cds_reduced, resolution=1e-5)
 # different time series -> different batch
 # one option: shape feature only?
 # use shape feature to visualize?
+
