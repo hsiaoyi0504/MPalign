@@ -18,7 +18,7 @@ BiocManager::install(version = "3.12")
 BiocManager::install(c('BiocGenerics', 'DelayedArray', 'DelayedMatrixStats',
                        'limma', 'S4Vectors', 'SingleCellExperiment',
                        'SummarizedExperiment', 'batchelor', 'Matrix.utils'))
-install.packages("devtools")
+install.packages("devtools", "philentropy")
 devtools::install_github('cole-trapnell-lab/leidenbase')
 devtools::install_github('cole-trapnell-lab/monocle3')
 ```
