@@ -1,0 +1,450 @@
+
+Attaching package: ‘arrow’
+
+The following object is masked from ‘package:utils’:
+
+    timestamp
+
+Loading required package: Biobase
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following object is masked from ‘package:arrow’:
+
+    type
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: SingleCellExperiment
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following objects are masked from ‘package:Biobase’:
+
+    anyMissing, rowMedians
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following object is masked from ‘package:Biobase’:
+
+    rowMedians
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:base’:
+
+    expand.grid
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Registered S3 methods overwritten by 'DelayedArray':
+  method             from 
+  as.character.Array arrow
+  as.integer.Array   arrow
+  as.vector.Array    arrow
+
+Attaching package: ‘monocle3’
+
+The following objects are masked from ‘package:Biobase’:
+
+    exprs, fData, fData<-, pData, pData<-
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:GenomicRanges’:
+
+    intersect, setdiff, union
+
+The following object is masked from ‘package:GenomeInfoDb’:
+
+    intersect
+
+The following objects are masked from ‘package:IRanges’:
+
+    collapse, desc, intersect, setdiff, slice, union
+
+The following objects are masked from ‘package:S4Vectors’:
+
+    first, intersect, rename, setdiff, setequal, union
+
+The following object is masked from ‘package:matrixStats’:
+
+    count
+
+The following object is masked from ‘package:Biobase’:
+
+    combine
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘philentropy’
+
+The following object is masked from ‘package:SummarizedExperiment’:
+
+    distance
+
+The following object is masked from ‘package:GenomicRanges’:
+
+    distance
+
+The following object is masked from ‘package:IRanges’:
+
+    distance
+
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 119167]
+Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+No trajectory to plot. Has learn_graph() been called yet?
+null device 
+          1 
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 119168]
+Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+No trajectory to plot. Has learn_graph() been called yet?
+null device 
+          1 
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 25577]
+Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+No trajectory to plot. Has learn_graph() been called yet?
+Warning message:
+The `add` argument of `group_by()` is deprecated as of dplyr 1.0.0.
+Please use the `.add` argument instead.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated. 
+null device 
+          1 
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 25310]
+Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+No trajectory to plot. Has learn_graph() been called yet?
+null device 
+          1 
+
+exp2:
+uninfected -> 8hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 545397]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 229061
+2       2   6193
+3       3   3065
+4       5     16
+5       4      0
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.001964342Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.003090183Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.0005732469Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+uninfected -> 24hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 486749]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 233829
+2       3   3034
+3       4   1003
+4       5    285
+5       2    184
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.02959556Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.03853766Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.007809651Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+uninfected -> 30hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 480650]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 233303
+2       3   3265
+3       4   1007
+4       5    548
+5       2    212
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.07524598Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.1258847Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.02270215Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+uninfected -> 36hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 451485]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 234112
+2       3   2553
+3       4   1007
+4       5    461
+5       2    202
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.1698419Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.3425757Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.05227413Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+uninfected -> 48hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 387713]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 236646
+2       3    989
+3       4    495
+4       2    205
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.1803321Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.4805765Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.0577638Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+8hrs -> 24hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 555476]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 295011
+2       2   5918
+3       4   3675
+4       3   2304
+5       5    154
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.01275088Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.01367134Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.003172942Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+8hrs -> 30hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 549377]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 297761
+2       3   5698
+3       2   2176
+4       4   1178
+5       5    249
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.0613171Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.09323041Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.01803169Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+8hrs -> 36hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 520212]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 276586
+2       2  22562
+3       4   5807
+4       3   1962
+5       5    145
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.06975843Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.08762169Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.01888928Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+8hrs -> 48hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 456440]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 297824
+2       3   5951
+3       2   1965
+4       4   1163
+5       5    159
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.1576715Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.2716797Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.04729866Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+24hrs -> 30hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 490729]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 234177
+2       2   8074
+3       3   5055
+4       4   1102
+5       5      6
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.02442445Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.03419199Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.006871052Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+24hrs -> 36hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 461564]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 233584
+2       2   7922
+3       3   5838
+4       4   1070
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.08904938Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.1360945Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.02616344Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+24hrs -> 48hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 397792]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 239643
+2       2   7701
+3       3   1070
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.08494165Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.1306495Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.02502882Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+30rs -> 36hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 455465]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 217672
+2       2  17108
+3       3   6149
+4       4   1045
+5       5    341
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.03447763Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.03451762Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.008015523Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+30rs -> 48hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 391693]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 224156
+2       2  16834
+3       3   1024
+4       4    301
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  0.03357195Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  0.03289871Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  0.007640628Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
+36rs -> 36hrs
+Loading cell dataset with dimensions [<feature>, <cell>] = [704, 362528]
+No trajectory to plot. Has learn_graph() been called yet?
+Aligning cells from different batches using Batchelor. 
+Please remember to cite:
+	 Haghverdi L, Lun ATL, Morgan MD, Marioni JC (2018). 'Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.' Nat. Biotechnol., 36(5), 421-427. doi: 10.1038/nbt.4091
+No trajectory to plot. Has learn_graph() been called yet?
+  cluster      n
+1       1 185135
+2       2  26995
+3       3   1020
+Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 1:  2.060439e-05Metric: 'kullback-leibler' using unit: 'log2'; comparing: 2 vectors.
+KL 2:  2.065666e-05Metric: 'jensen-shannon' using unit: 'log2'; comparing: 2 vectors.
+JSD:  5.157476e-06Warning message:
+In normalize_expr_data(cds, norm_method, pseudo_count) : NaNs produced
